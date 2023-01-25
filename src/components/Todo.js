@@ -1,24 +1,35 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 
-export const Todo = () => {
-    const [todos, setTodos] = useState ([]);
+export const Workout = (props) => {
+    const [workouts, setWorkouts] = useState([]);
 
     useEffect(() => {
-        axios.get("http://workout-journal-server.vercel.app/todos", 
-        ).then((response) => {
-          setTodos(response.data)})
-      }, []);
+        axios.get("https://workout-journal-server.vercel.app/workouts", {
+        // axios.get("http://localhost:5000/workouts", {
+          headers: {               
+            Authorization : `Bearer ${props.token}`
+          }
+        }).then((response) => {
+
+          props.setUser(response.data.user)
+            
+        setWorkouts(response.data.rows)})
+      }, [props.token]);
+
+      useEffect(() => {
+        console.log(workouts);
+      }, [workouts])
 
   return (
-    <div>
+    <div className='workout-container'>
         <ul className='list'>
-            {!todos.length ? (
+            {!workouts.length ? (
                 <p>Loading Workouts...</p>
             ) : (
-            todos.map(({id, todo, user_id}) => {
-                return <li className='item' key={id}>{todo}</li>
-            })
+            workouts.map(({id, workout, user_id}) => (
+                <li className='item' key={id}>{workout}</li>
+            ))
         )}    
         </ul>     
     </div>
