@@ -1,20 +1,18 @@
-import axios from 'axios';
-import { useEffect } from 'react';
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
-import { Signin } from './components/Signin';
-import { Todo } from './components/Todo';
+import { Router } from './Router'
+import Navigation from './components/Navigation'
+// import { Provider } from 'react-redux';
+// import store from './redux/store';
 
 function App() {
-
-  useEffect(() => {
-    console.log("mounted");
-  })
   
   return (
-    <div className="App">
-        <Signin />
-        {/* <Todo /> */}
-    </div>
+      <BrowserRouter>
+          <Navigation />
+          <Router />
+      </BrowserRouter>
   );
 }
 
