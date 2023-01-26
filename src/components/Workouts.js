@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import '../App.css'
 import {
+    Button,
     Container,
     Card,
     Typography
@@ -39,12 +40,12 @@ export function Workouts(props) {
     
     return (
         <div className='listings-container'>
-            <Typography>Your Workouts!</Typography>
             {!workouts.length ? (
                 <p>Loading Workouts...</p>
             ) : (
             workouts.map(({id, workout}) => (
-                <Container>
+              <Container>
+                  <Typography>Your Workouts!</Typography>
                             <Link to={`/workouts/${workouts.id}`}>
                             <Card>
                             <Typography className='workout-card'>
@@ -62,10 +63,12 @@ export function Workouts(props) {
                             }} 
                             />
                             </Card>
+                            
                             </Link>
             </Container>
             ))
         )}
+        <Button component={Link} variant='contained' type='submit' to="/createworkout">Create A New Workout!</Button>
         </div>
     )
 }

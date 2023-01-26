@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {Link, useNavigate} from 'react-router-dom'
+import { 
+  Button,
+} from '@mui/material'
+import {
+  Link, 
+  useNavigate
+} from 'react-router-dom'
 
 export const Signup = (props) => {
     const [email, setEmail] = useState("");
@@ -31,7 +37,7 @@ export const Signup = (props) => {
             setName("");
             setEmail("");
             setPassword("");
-            navigate("/");
+            navigate("/home");
           }}
 
     >
@@ -49,7 +55,7 @@ export const Signup = (props) => {
             <input className='input' type="password" onChange={(e) => setPassword(e.target.value)}/>
         </label>
             <input className='submit' type="submit"/>
-        <p>Already Have An Account? <Link to="/">Sign in!</Link></p>
+            <Button component={Link} variant='contained' type='submit' to="/"> Already Have An Account? Sign In!</Button>
     </form>
     </>
   )

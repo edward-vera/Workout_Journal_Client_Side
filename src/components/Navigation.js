@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link, useNavigate } from "react-router-dom";
-// import LoginBar from '../containers/LoginBar';
-import { AppBar, ThemeProvider, Toolbar, Typography, createTheme } from '@mui/material'
+import { AppBar, Button, ThemeProvider, Toolbar, Typography, createTheme } from '@mui/material'
 import cookie from 'cookie';
 
 const theme = createTheme({
@@ -33,17 +32,15 @@ export const Navigation = () => {
           </Typography>
           <ul className="nav-list">
                     <li className="nav-list-item">
-                        <Typography>
-                            <Link to="/workouts">Workouts</Link>
-                        </Typography>
+                    <Button style={{ color: 'white' }} component={Link} to="/home">Home</Button>
                     </li>
-                    {checkAuth() ? (
+                    {/* {checkAuth() ? ( */}
                         <li className='nav-list-item'>
-                        <Link to='/todos'>
-                          <Typography style={{ color: 'white' }}>Add Workouts</Typography>
-                        </Link>
+                        <Button style={{ color: 'white' }} component={Link} to='/createworkout'>
+                          Create Workout
+                        </Button>
                       </li> 
-                                  ) : null}
+                                  {/* // ) : null} */}
                     <li
                     className='nav-list-item'
                     onClick={() => {
@@ -53,9 +50,9 @@ export const Navigation = () => {
                         navigate('/');
                      }}
                      >
-                        <Typography style={{ color: 'white' }}>
+                        <Button style={{ color: 'white' }}>
                             {checkAuth() ? 'Logout' : 'Login'}
-                         </Typography>
+                         </Button>
                     </li>
                 </ul>
         </Toolbar>
