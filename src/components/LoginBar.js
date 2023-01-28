@@ -21,7 +21,7 @@ const theme = createTheme({
   },
 });
 
-export default function LoginBar(props) {
+export function LoginBar(props) {
   console.log(props);
   const activeUser = props.user.slice(-1)[0].username;
   return (
@@ -29,7 +29,7 @@ export default function LoginBar(props) {
       <ThemeProvider theme={theme}>
         <AppBar
           position='static'
-          color='secondary'
+          color='primary'
           sx={{
             height: '24px',
             display: 'flex',

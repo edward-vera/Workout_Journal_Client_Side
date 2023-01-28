@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import WorkoutDropdown from './WorkoutDropdowns'
+import WorkoutDropdown from '../components/WorkoutDropdowns'
 import { 
     Button,
 } from '@mui/material'

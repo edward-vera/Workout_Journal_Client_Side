@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { ResetTvRounded } from '@mui/icons-material';
 
-export function Calorie(props) {
+export function Calories(props) {
     const [calories, setCalories] = useState("");
+    console.log(props);
 
   useEffect(() => {
     axios.get('https://workout-journal-server.vercel.app/calories', {
@@ -14,7 +14,7 @@ export function Calorie(props) {
 
       console.log(response);
 
-      setCalories(response.data)})
+      setCalories(response.data.rows)})
   }, [props.token]);
 
   useEffect(() => {
