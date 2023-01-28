@@ -8,8 +8,9 @@ import {
   useNavigate
 } from 'react-router-dom'
 
-export function SignIn (props) {
+export const SignUp = (props) => {
     const [email, setEmail] = useState("");
+    const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
     
@@ -24,34 +25,38 @@ export function SignIn (props) {
         onSubmit={(e) => {
             e.preventDefault()
 
-            axios.post("https://workout-journal-server.vercel.app/signin", {
-            // axios.post("http://localhost:5000/signin", {
+            axios.post("https://workout-journal-server.vercel.app/signup", {
+            // axios.post("http://localhost:5000/signup", {
+                name,
                 email,
                 password
             }
             ).then((response) =>{
               console.log(response);
-              props.setToken(response.data.token)
             })
-
-          
+            setName("");
             setEmail("");
             setPassword("");
-            navigate("/home")
-        }}
+            navigate("/home");
+          }}
+
     >
 
         <label className='label'>
+            Name:
+            <input className='input' type="text" onChange={(e) => setName(e.target.value)}/>
+        </label>
+        <label className='label'>
             Email:
-            <input className='input' type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+            <input className='input' type="email" onChange={(e) => setEmail(e.target.value)}/>
         </label>
         <label className='label'>
             Password:
-            <input className='input' type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+            <input className='input' type="password" onChange={(e) => setPassword(e.target.value)}/>
         </label>
             <input className='submit' type="submit"/>
-            <Button component={Link} variant='contained' type='submit' to="/signup" style={{backgroundColor:'#FF2625'}}> New Here? Create Account!</Button>
+            <Button component={Link} variant='contained' type='submit' to="/"> Already Have An Account? Sign In!</Button>
     </form>
     </>
   )
-};
+}

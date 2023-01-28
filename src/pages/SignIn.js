@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {Link, useNavigate} from 'react-router-dom'
+import { 
+  Button,
+} from '@mui/material'
+import {
+  Link, 
+  useNavigate
+} from 'react-router-dom'
 
-export const Signup = (props) => {
+export const SignIn = (props) => {
     const [email, setEmail] = useState("");
-    const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
     
@@ -19,37 +24,33 @@ export const Signup = (props) => {
         onSubmit={(e) => {
             e.preventDefault()
 
-            axios.post("https://workout-journal-server.vercel.app/signup", {
-            // axios.post("http://localhost:5000/signup", {
-                name,
+            axios.post("https://workout-journal-server.vercel.app/signin", {
+            // axios.post("http://localhost:5000/signin", {
                 email,
                 password
             }
             ).then((response) =>{
               console.log(response);
+              props.setToken(response.data.token)
             })
-            setName("");
+
+          
             setEmail("");
             setPassword("");
-            navigate("/");
-          }}
-
+            navigate("/home")
+        }}
     >
 
         <label className='label'>
-            Name:
-            <input className='input' type="text" onChange={(e) => setName(e.target.value)}/>
-        </label>
-        <label className='label'>
             Email:
-            <input className='input' type="email" onChange={(e) => setEmail(e.target.value)}/>
+            <input className='input' type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
         </label>
         <label className='label'>
             Password:
-            <input className='input' type="password" onChange={(e) => setPassword(e.target.value)}/>
+            <input className='input' type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
         </label>
             <input className='submit' type="submit"/>
-        <p>Already Have An Account? <Link to="/">Sign in!</Link></p>
+            <Button component={Link} variant='contained' type='submit' to="/signup"> New Here? Create Account!</Button>
     </form>
     </>
   )

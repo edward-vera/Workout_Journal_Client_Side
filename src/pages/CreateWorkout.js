@@ -1,6 +1,12 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import WorkoutDropdown from './WorkoutDropdowns'
+import WorkoutDropdown from '../components/WorkoutDropdowns'
+import { 
+    Button,
+} from '@mui/material'
+import {
+    Link,
+} from 'react-router-dom'
 
 export function CreateWorkout({token, user, workouts, setworkouts}) {
     const[workout, setWorkout] = useState("");
@@ -23,7 +29,8 @@ export function CreateWorkout({token, user, workouts, setworkouts}) {
     }}>
         
         <WorkoutDropdown />
-        <input className='submit' type="submit" to="/createworkout" value="Add a Workout!" />
+        <Button component={Link} variant='contained' type='submit'>Add New Exercise</Button>
+        <Button component={Link} variant='contained' type='submit' to="/workouts">Create Workout!</Button>
     </form>
   )
 }

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import '../App.css'
+import '../css/App.css'
 import {
+    Button,
     Container,
     Card,
     Typography
@@ -29,6 +30,8 @@ export function Workouts(props) {
           }
         }).then((response) => {
 
+            console.log(response);
+
           props.setUser(response.data.user)
             
         setWorkouts(response.data.rows)})
@@ -38,17 +41,20 @@ export function Workouts(props) {
       }, [workouts])
     
     return (
+      <>
+      <Typography>
+      <h1>Your Workouts!</h1>
+      </Typography>
         <div className='listings-container'>
-            <Typography>Your Workouts!</Typography>
             {!workouts.length ? (
                 <p>Loading Workouts...</p>
             ) : (
-            workouts.map(({id, workout}) => (
-                <Container>
-                            <Link to={`/workouts/${workouts.id}`}>
+            workouts.map(({id, exercise, workout}) => (
+              <Container>
+                            <Link to={`/workoutexercises/${exercise.workout_id}`}>
                             <Card>
                             <Typography className='workout-card'>
-                                <h1>{workout}</h1>
+                                <h1>{workout.charAt(0).toUpperCase() + workout.slice(1)}</h1>
                             </Typography>
                             <DeleteIcon
                             onClick={() => props.removeListings()}
@@ -66,6 +72,8 @@ export function Workouts(props) {
             </Container>
             ))
         )}
+        <Button component={Link} variant='contained' type='submit' to="/createworkout">Create A New Workout!</Button>
         </div>
+    </>
     )
 }
