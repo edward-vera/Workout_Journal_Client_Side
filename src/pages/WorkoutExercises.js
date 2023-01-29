@@ -24,7 +24,7 @@ export function WorkoutExercises(props) {
              }
         ).then((response) => {
 
-            console.log(response);
+            // console.log(response);
 
             
         setExercises(response.data)})
@@ -41,7 +41,7 @@ export function WorkoutExercises(props) {
   return (
     <div className='exercise-container'>
         {exercises.map((exercise) =>{
-            console.log(exercise);
+            // console.log(exercise);
             return (
             <div className='list'>
                 <div>

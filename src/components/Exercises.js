@@ -7,7 +7,7 @@ import { ExerciseCard } from './ExerciseCard';
 import { Loader } from './Loader';
 
 export function Exercises ({ exercises, setExercises, bodyPart }){
-    console.log(exercises)
+    // console.log(exercises)
   const [currentPage, setCurrentPage] = useState(1);
   const [exercisesPerPage] = useState(6);
 

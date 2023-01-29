@@ -18,7 +18,7 @@ export const Workout = (props) => {
       }, [props.token]);
 
       useEffect(() => {
-        console.log(workouts);
+        // console.log(workouts);
       }, [workouts])
 
   return (

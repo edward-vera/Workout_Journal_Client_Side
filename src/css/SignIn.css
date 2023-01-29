@@ -1,0 +1,32 @@
+.form {
+    display: grid;
+    grid-template-columns: 400px;
+    row-gap: 8px;
+    justify-content: center;
+    margin-top: 60px;
+  }
+  
+  .label {
+    font-family: helvetica;
+  }
+  
+  .input {
+    display: block;
+    padding: 6px 0;
+    margin-top: 4px;
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  .submit {
+    width: 100%;
+    text-transform: uppercase;
+    padding: 8px 0;
+    background-color: rgba(0,0,0,0);
+    border: 1px solid black;
+  }
+  
+  .submit:hover {
+    cursor: pointer;
+    background-color: rgba(255, 0, 0, 0.05);
+  }

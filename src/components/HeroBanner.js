@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box, Button, Typography } from '@mui/material'
+import { Link } from 'react-router-dom'
 import { red } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
 
@@ -14,7 +15,7 @@ const ColorButton = styled(Button)(({ theme }) => ({
 export function HeroBanner() {
   return (
     <Box sx={{
-      mt: { lg: "120px", xs: "70px"},
+      mt: { lg: "10px", xs: "70px"},
       ml: { sm: "50px"}
     }} position= "relative" p="20px">
       <Typography color="#FF2625"
@@ -37,7 +38,7 @@ export function HeroBanner() {
       backgroundcolor= "FF2625"
       padding= "10px"
       > 
-      <a href="#exercises" style={{ textDecoration: "none", color:"white"}}>Explore Exercises</a></ColorButton>
+      <Link to="/knownexercises" style={{ textDecoration: "none", color:"white"}}>Explore Exercises</Link></ColorButton>
       <Typography
       fontWeight={600}
       color="#FF2625"

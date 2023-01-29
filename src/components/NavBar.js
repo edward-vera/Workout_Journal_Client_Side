@@ -30,7 +30,7 @@ export function NavBar() {
   return (
     <>
       <nav className='navbar'>
-        <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+        <Link to='/home' className='navbar-logo' onClick={closeMobileMenu}>
           Get Fit!
         </Link>
         <div className='menu-icon' onClick={handleClick}>
@@ -38,9 +38,18 @@ export function NavBar() {
         </div>
         <ul className={click ? 'nav-menu active' : 'nav-menu'}>
           <li className='nav-item'>
-            <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+            <Link to='/home' className='nav-links' onClick={closeMobileMenu}>
               Home
             </Link>
+          </li>
+          <li className='nav-item'>
+            <a
+              href='/knownexercises'
+              className='nav-links'
+              onClick={closeMobileMenu}
+            >
+              Exercises
+            </a>
           </li>
           <li
             className='nav-item'
@@ -48,39 +57,30 @@ export function NavBar() {
             onMouseLeave={onMouseLeave}
           >
             <Link
-              to='/services'
+              to='/workouts'
               className='nav-links'
               onClick={closeMobileMenu}
             >
-              Services <i className='fas fa-caret-down' />
+              Workouts 
             </Link>
             {dropDown && <NavBarDropDown />}
           </li>
-          <li className='nav-item'>
-            <a
-              href='#exercises'
-              className='nav-links'
-              onClick={closeMobileMenu}
-            >
-              Exercises
-            </a>
-          </li>
-          <li className='nav-item'>
+          {/* <li className='nav-item'>
             <Link
-              to='/contact-us'
+              to='/About'
               className='nav-links'
               onClick={closeMobileMenu}
             >
-              Contact Us
+              About
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link
-              to='/sign-up'
+              to='/signin'
               className='nav-links-mobile'
               onClick={closeMobileMenu}
             >
-              Sign Up
+              Sign In
             </Link>
           </li>
         </ul>
