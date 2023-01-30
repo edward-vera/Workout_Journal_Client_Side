@@ -1,89 +1,52 @@
-// import React, { useState } from 'react';
-// import { NavButton } from '../components/NavButton';
-// import { Link } from 'react-router-dom';
-// import '../css/NavBar.css';
-// // import {NavBarDropDown}  from '../components/NavBarDropDown';
+import * as React from 'react';
+import {
+  AppBar,
+  Box,
+  Button,
+  createTheme,
+  Stack,
+  ThemeProvider,
+  Toolbar,
+} from '@mui/material';
 
-// export function NavBar() {
-//   const [click, setClick] = useState(false);
-//   const [dropDown, setDropDown] = useState(false);
+import { Link } from 'react-router-dom';
 
-//   const handleClick = () => setClick(!click);
-//   const closeMobileMenu = () => setClick(false);
 
-//   const onMouseEnter = () => {
-//     if (window.innerWidth < 960) {
-//       setDropDown(false);
-//     } else {
-//       setDropDown(true);
-//     }
-//   };
 
-//   const onMouseLeave = () => {
-//     if (window.innerWidth < 960) {
-//       setDropDown(false);
-//     } else {
-//       setDropDown(false);
-//     }
-//   };
+export function NavBar() {
 
-//   return (
-//     <>
-//       <nav className='navbar'>
-//         <Link to='/home' className='navbar-logo' onClick={closeMobileMenu}>
-//           Get Fit!
-//         </Link>
-//         <div className='menu-icon' onClick={handleClick}>
-//           <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
-//         </div>
-//         <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-//           <li className='nav-item'>
-//             <Link to='/home' className='nav-links' onClick={closeMobileMenu}>
-//               Home
-//             </Link>
-//           </li>
-//           <li className='nav-item'>
-//             <Link
-//               to='/knownexercises'
-//               className='nav-links'
-//               onClick={closeMobileMenu}
-//             >
-//               Exercises
-//             </Link>
-//           </li>
-//           <li
-//             className='nav-item'
-//             onMouseEnter={onMouseEnter}
-//             onMouseLeave={onMouseLeave}
-//           >
-//             <Link
-//               to='/workouts'
-//               className='nav-links'
-//               onClick={closeMobileMenu}
-//             >
-//               Workouts 
-//             </Link>
-//             <Link
-//               to='/calorietracker'
-//               className='nav-links'
-//               onClick={closeMobileMenu}
-//             >
-//               Calorie Tracker
-//             </Link>
-//             {/* {dropDown && <NavBarDropDown />} */}
-//           </li>
-//           <li>
-//             {/* <Link
-//               to='/signin'
-//               className='nav-links'
-//               onClick={closeMobileMenu}
-//             >
-//               Sign In
-//             </Link> */}
-//           </li>
-//         <NavButton />
-//         </ul>
-//       </nav>
-//     </>
-//   );
-// }
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#000000',
+      },
+      secondary: {
+        main: '#E0E0E0',
+      },
+      accent: {
+        main: '#a0a0a9',
+      },
+    },
+  });
+
+  return (
+    <Box sx={{ flexGrow: 1 }}>
+      <ThemeProvider theme={theme}>
+      <AppBar color='primary' position="static">
+        <Toolbar>
+          <Button fontSize='36px' sx={ {p:"25px"} } color='inherit' component={Link} to="/home">
+            Get Fit
+          </Button>
+          <Stack ml="300px" direction='row' gap="25px">
+          <Button component={Link} to="/workouts" color="inherit">Workouts</Button>
+          <Button component={Link} to="/knownexercises" color="inherit">Exercises</Button>
+          <Button component={Link} to="/calorietracker" color="inherit">Calorie Tracker</Button>
+          <Button component={Link} to="/bmicalculator" color="inherit">BMI Calc</Button>
+          <Button component={Link} to="/signin" color="inherit">Signin</Button>
+          </Stack>
+        </Toolbar>
+      </AppBar>
+      </ThemeProvider>
+    </Box>
+  );
+}

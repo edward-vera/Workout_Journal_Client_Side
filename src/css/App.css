@@ -100,6 +100,10 @@ body {
   transition: 0.3s all ease-in-out;
 }
 
+.wo-exercises-card {
+  height: 35px;
+}
+
 .exercise-card img {
   height: 326px;
 }
