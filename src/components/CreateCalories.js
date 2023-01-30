@@ -20,7 +20,7 @@ export function CreateCalories({token, user, calories, setCalories }, props) {
     const [fat, setFat] = useState("");
     const [protein, setProtein] = useState("");
 
-    const onSubmit=(e) => {
+    const onSubmit = (e) => {
       e.preventDefault();
 
       axios.post("https://workout-journal-server.vercel.app/calorietracker", {
@@ -54,10 +54,10 @@ export function CreateCalories({token, user, calories, setCalories }, props) {
 
 
   return (
-
-    <Box>
       <Box id="exercises" sx={{ mt: { lg: '30px' } }}>
-        <Stack className='workouts-container' direction="row" sx={{ gap: { lg: '107px', xs: '50px' } }} flexWrap="wrap" justifyContent="center">
+        <Stack className='workouts-container' 
+        direction="row" sx={{ gap: { lg: '107px', xs: '50px' } }} 
+        flexWrap="wrap" justifyContent="center">
           <Stack className="calories-card">
               <FilledInput type="text" className='input' 
               onChange={(e) => setMeal(e.target.value)} 
@@ -93,45 +93,6 @@ export function CreateCalories({token, user, calories, setCalories }, props) {
               <input onClick={onSubmit} className='submit' type='submit' value="Submit" />
           </Stack>
         </Stack>
-      </Box>
-        {/* <Stack direction="row" justifyContent="center">
-                <Button sx={{ 
-                    ml: '22px', 
-                    mr: '22px', 
-                    color: '#fff', 
-                    background: '#00425A', 
-                    fontSize: '14px', 
-                    borderRadius: '20px', 
-                    textTransform: 'capitalize' }}
-                    // onClick={() => }
-                    >
-                    <Typography>Submit</Typography>
-                </Button>
-                <Button sx={{ 
-                    ml: '22px', 
-                    mr: '22px', 
-                    color: '#fff', 
-                    background: '#00425A', 
-                    fontSize: '14px', 
-                    borderRadius: '20px', 
-                    textTransform: 'capitalize' }}
-                    // onClick={() => }
-                    >
-                    <Typography>Edit</Typography>
-                </Button>
-                <Button sx={{ 
-                    ml: '22px', 
-                    mr: '22px', 
-                    color: '#fff', 
-                    background: '#00425A', 
-                    fontSize: '14px', 
-                    borderRadius: '20px', 
-                    textTransform: 'capitalize' }}
-                    // onClick={() => }
-                    >
-                    <Typography>Delete</Typography>
-                </Button>
-        </Stack> */}
-    </Box>  
+      </Box> 
   )
 }

@@ -50,7 +50,7 @@ export function Workouts(props) {
     }, [props.token]);
 
     useEffect(() => {
-    }, [workouts])
+    }, [props.workouts])
     
     // if (!workouts) return <Loader />;
 
@@ -67,7 +67,7 @@ export function Workouts(props) {
                   </Stack>
             ) : (
             workouts.map(({ workout }) => (
-            <Box >
+            <Box>
                <Button className='workout-name' component={Link} to="/workoutsid/" sx={{ mt:'15px', ml: '100px', mb:'22px', color: '#fff', background: '#00425A', fontSize: '24px', borderRadius: '20px', textTransform: 'capitalize' }}>
                {workout}
                </Button>

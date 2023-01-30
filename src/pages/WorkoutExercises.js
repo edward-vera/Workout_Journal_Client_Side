@@ -11,6 +11,7 @@ import {
     Link, 
     // useNavigate
 } from 'react-router-dom'
+import {CreateExercise} from '../components/CreateExercise'
 
 export function WorkoutExercises(props) {
     const [exercises, setExercises] = useState([]);
@@ -41,27 +42,47 @@ export function WorkoutExercises(props) {
         return null
     }
 
-  return (
-    <Box className='exercise-container'>
-        {exercises.map((exercise, index) =>{
-            // console.log(exercise);
-            return (
-            <Stack key={index}>
-            <Stack className='list'>
-                <Stack>
-                <Typography>Exercise : {exercise.exerciseName.charAt(0).toUpperCase() + exercise.exerciseName.slice(1)}</Typography>
+return(
+    <Box id="exercises" sx={{ mt: { lg: '30px' } }}>
+        <Typography fontWeight={700} sx={{ fontSize: { lg: '44px', xs: '30px' } }} mt="30px" mb="49px" textAlign="center">
+        <Typography component='span' variant='h2'>Your Workouts!</Typography>
+        </Typography>
+        <Stack className='workouts-container' direction="row" sx={{ gap: { lg: '107px', xs: '50px' } }} flexWrap="wrap" justifyContent="center">
+        {exercises.map((exercise, index) => {
+            return(
+                <Link key={index} className="calories-card">
+                        <Button sx={{ mt:'15px', ml: '21px', mr: '22px', color: '#fff', background: '#00425A', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
+                        Exercise : {exercise.exerciseName.charAt(0).toUpperCase() + exercise.exerciseName.slice(1)}
+                        </Button>
+                <Stack direction="row">
+                        <Button sx={{ ml: '21px', color: '#fff', background: '#1F8A70', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
+                        Target : {exercise.muscleTarget.charAt(0).toUpperCase() + exercise.muscleTarget.slice(1)}
+                        </Button>
+                        <Button sx={{ ml: '21px', mr: '22px', color: '#fff', background: '#BFDB38', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
+                        Equipment Used : {exercise.equipmentType.charAt(0).toUpperCase() + exercise.equipmentType.slice(1)}
+                        </Button>
                 </Stack>
-                <Typography>Muscle Target : {exercise.muscleTarget.charAt(0).toUpperCase() + exercise.muscleTarget.slice(1)}</Typography>
-                <Typography>Equipment Used : {exercise.equipmentType.charAt(0).toUpperCase() + exercise.equipmentType.slice(1)}</Typography>
-                <Typography>Sets : {exercise.sets} x Reps : {exercise.reps}</Typography>
-                <Typography>Weight : {exercise.weight}</Typography>
-                <Typography>Duration : {exercise.duration}</Typography>
-                <Typography>Notes : {exercise.notes}</Typography>
-            </Stack>
-            </Stack>
+                <Stack direction="row" justifyContent="center">
+                        <Button sx={{ ml: '22px', mr: '22px', color: '#fff', background: '#FC7300', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
+                        Sets : {exercise.sets}
+                        </Button>
+                        <Button sx={{ ml: '22px', mr: '22px', color: '#fff', background: '#FC7300', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
+                        Reps : {exercise.reps}
+                        </Button>
+                </Stack>
+                        <Button sx={{ ml: '22px', mr: '22px', color: '#fff', background: '#FC7300', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
+                        Weight : {exercise.weight}
+                        </Button>
+                        <Button sx={{ ml: '22px', mr: '22px', color: '#fff', background: '#FC7300', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
+                        Duration : {exercise.duration}
+                        </Button>
+                        <Button sx={{ ml: '22px', mr: '22px', color: '#fff', background: '#FC7300', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
+                        Notes : {exercise.notes}
+                        </Button>
+                </Link>  
             )
         })}
-        <Button component={Link} variant='contained' type='submit' to="/workouts">Back To Workouts!</Button>
+        <CreateExercise />
+        </Stack>
     </Box>
-  )
-}
+)}
