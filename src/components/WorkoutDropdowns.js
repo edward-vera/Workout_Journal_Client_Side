@@ -25,7 +25,8 @@ export default function WorkoutDropdowns(props) {
         Authorization : `Bearer ${props.token}`,
       }
     }).then((response) => {
-      console.log(response);})
+      // console.log(response);
+    })
   }, [props.token])
   
   useEffect(() => {

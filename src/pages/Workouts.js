@@ -38,8 +38,6 @@ export function Workouts(props) {
           Authorization : `Bearer ${props.token}`
         }
       }).then((response) => {
-
-          console.log(response);
           
 
         // FOR ACTUAL SITE

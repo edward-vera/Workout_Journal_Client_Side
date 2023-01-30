@@ -15,7 +15,7 @@ export const SignUp = (props) => {
     const navigate = useNavigate();
     
   useEffect(() => {
-    console.log({email, password});
+    // console.log({email, password});
   }, [email, password])
 
   return (
@@ -32,7 +32,7 @@ export const SignUp = (props) => {
                 password
             }
             ).then((response) =>{
-              console.log(response);
+              // console.log(response);
             })
             setName("");
             setEmail("");

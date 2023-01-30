@@ -27,7 +27,7 @@ export function WorkoutExercises(props) {
              }
         ).then((response) => {
 
-            console.log(response);
+            // console.log(response);
 
             
         setExercises(response.data.rows)})
