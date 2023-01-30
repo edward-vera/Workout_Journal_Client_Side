@@ -11,7 +11,7 @@ export function Exercises ({ exercises, setExercises, bodyPart }){
   const [currentPage, setCurrentPage] = useState(1);
   const [exercisesPerPage] = useState(6);
 
-  useEffect(() => {
+  useEffect((setExercises) => {
     const fetchExercisesData = async () => {
       let exercisesData = [];
 
