@@ -1,31 +1,52 @@
-import React, { useState } from 'react'
-import { Box } from '@mui/material'
-import { HeroBanner } from '../components/HeroBanner'
-import { SearchExercises } from '../components/SearchExercises'
-import { Exercises } from '../components/Exercises'
+import React from 'react'
+import { 
+  Button, 
+  Box,
+  Stack,
+  Typography
+} from '@mui/material'
+import {
+  Link,
+} from 'react-router-dom'
+import { red } from '@mui/material/colors';
+import { styled } from '@mui/material/styles';
 
+const ColorButton = styled(Button)(({ theme }) => ({
+  color: theme.palette.getContrastText(red[500]),
+  backgroundColor: red[500],
+  '&:hover': {
+    backgroundColor: red[700],
+  },
+}));
 
 export function Home() {
-  const [exercises, setExercises] = useState([]);
-  const [bodyPart, setBodyPart] = useState('all')
+  return (
 
-    return (
-      <form className='home'>
-        
-          <Box>
-            <HeroBanner />
-            <SearchExercises setExercises={setExercises} bodyPart={bodyPart} setBodyPart={setBodyPart} />
-            <Exercises setExercises={setExercises} exercises={exercises} bodyPart={bodyPart} />
-          </Box>
-
-        
-
-
-      {/* <div className='home-buttons'>
-      <Button component={Link} variant='contained' type='submit' to="/workouts"> Your Workouts!</Button>
-      <Button component={Link} variant='contained' type='submit' to="/createworkout"> Create New Workout!</Button>
-      <Button component={Link} variant='contained' type='submit' to="/calories"> Your Calorie Tracker!</Button>
-      </div> */}
-      </form>
+      <Box className='home-buttons' sx={{ mt: { lg: '109px' } }} mt="50px" p="20px">
+        <Typography variant="h4" fontWeight="bold" 
+        sx={{ fontSize: { lg: '44px', xs: '30px' } }} mt="-70px" mb="46px" textAlign="center">Welcome *INSERT USER'S NAME HERE*</Typography>
+        <Stack direction="row" sx={{ gap: { lg: '107px', xs: '50px' } }} flexWrap="wrap" justifyContent="center">
+          <ColorButton component={Link} variant='contained' type='submit' to="/workouts">
+            <Typography>
+                Your Workouts!
+            </Typography>
+          </ColorButton>
+          <ColorButton component={Link} variant='contained' type='submit' to="/createworkout">
+            <Typography>
+                Create New Workout!
+            </Typography>
+          </ColorButton>
+          <ColorButton component={Link} variant='contained' type='submit' to="/calorietracker">
+            <Typography>
+                Your Calorie Tracker!
+            </Typography>
+          </ColorButton>
+          <ColorButton component={Link} variant='contained' type='submit' to="/bmicalculator"> 
+            <Typography> 
+                BMI Calculator
+            </Typography>  
+          </ColorButton>
+        </Stack>
+      </Box>
   )
 }

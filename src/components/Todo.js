@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 
@@ -18,20 +19,20 @@ export const Workout = (props) => {
       }, [props.token]);
 
       useEffect(() => {
-        console.log(workouts);
+        // console.log(workouts);
       }, [workouts])
 
   return (
-    <div className='workout-container'>
-        <ul className='list'>
+    <Box className='workout-container'>
+        <Stack className='list'>
             {!workouts.length ? (
-                <p>Loading Workouts...</p>
+                <Typography>Loading Workouts...</Typography>
             ) : (
             workouts.map(({id, workout, user_id}) => (
                 <li className='item' key={id}>{workout}</li>
             ))
         )}    
-        </ul>     
-    </div>
+        </Stack>     
+    </Box>
   )
 }

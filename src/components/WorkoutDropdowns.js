@@ -22,7 +22,7 @@ export default function WorkoutDropdowns(props) {
   useEffect(() => {
     axios.get('https://workout-journal-server.vercel.app/workouts', {
       headers: {
-        // Authorization : `Bearer ${props.token}`,
+        Authorization : `Bearer ${props.token}`,
       }
     }).then((response) => {
       console.log(response);})
@@ -40,7 +40,7 @@ export default function WorkoutDropdowns(props) {
 
     <div>
       {/* {exercises.map((exercises) => {
-        // console.log(exercises);
+        console.log(exercises);
       })} */}
     </div>
   

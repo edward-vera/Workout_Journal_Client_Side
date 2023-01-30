@@ -3,16 +3,16 @@ import axios from 'axios';
 import '../css/App.css'
 import { 
     Box,
-    Button,
+    // Button,
     Stack,
     Typography
 } from '@mui/material'
-import {
-    Link, 
-    // useNavigate
-} from 'react-router-dom'
+// import {
+//     Link, 
+//     // useNavigate
+// } from 'react-router-dom'
 
-export function WorkoutExercises(props) {
+export function WorkoutCard(props) {
     const [exercises, setExercises] = useState([]);
     // console.log(props);
 
@@ -48,20 +48,11 @@ export function WorkoutExercises(props) {
             return (
             <Stack key={index}>
             <Stack className='list'>
-                <Stack>
                 <Typography>Exercise : {exercise.exerciseName.charAt(0).toUpperCase() + exercise.exerciseName.slice(1)}</Typography>
-                </Stack>
-                <Typography>Muscle Target : {exercise.muscleTarget.charAt(0).toUpperCase() + exercise.muscleTarget.slice(1)}</Typography>
-                <Typography>Equipment Used : {exercise.equipmentType.charAt(0).toUpperCase() + exercise.equipmentType.slice(1)}</Typography>
-                <Typography>Sets : {exercise.sets} x Reps : {exercise.reps}</Typography>
-                <Typography>Weight : {exercise.weight}</Typography>
-                <Typography>Duration : {exercise.duration}</Typography>
-                <Typography>Notes : {exercise.notes}</Typography>
             </Stack>
             </Stack>
             )
         })}
-        <Button component={Link} variant='contained' type='submit' to="/workouts">Back To Workouts!</Button>
     </Box>
   )
 }

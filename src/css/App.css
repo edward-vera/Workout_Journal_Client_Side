@@ -1,3 +1,7 @@
+:root {
+  --primary: green;
+}
+
 body {
   font-family: 'Josefin Sans';
   background-color: #FFF3F4;
@@ -14,6 +18,10 @@ body {
   width: 0px;
 }
 
+.css-1hba4td {
+  margin-top: 109px;
+}
+
 .right-arrow,
 .left-arrow {
   cursor: pointer;
@@ -23,7 +31,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #FF2625;
+  color: #000000;
   font-size: 25px;
   border-radius: 4px;
   position: absolute;
@@ -77,6 +85,20 @@ body {
   transform: scale(1, 1);
   transition: 0.3s all ease-in-out;
 }
+.calories-card {
+  width: 400px;
+  height: 350px;
+  background: #fff;
+  border-top: 4px solid #FF2625;
+  border-bottom-left-radius: 20px;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding-bottom: 10px;
+  transform: scale(1, 1);
+  transition: 0.3s all ease-in-out;
+}
 
 .exercise-card img {
   height: 326px;
@@ -106,7 +128,7 @@ body {
   text-decoration: none;
 }
 
-@media screen and (max-width:1200px) {
+@media screen and (min-width:1200px) {
   .detail-image {
     width: 300px;
     height: 300px;
@@ -142,113 +164,3 @@ body {
   }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Login Section */
-.login-form {
-  display: flex;
-  flex-direction: column;
-  margin: 50px auto;
-  width: 50%;
-  gap: 15px
-}
-
-.text-gray {
-  color: gray
-}
-
-.nav-list {
-  list-style: none;
-  display: flex;
-}
-
-.nav-list-item {
-  margin: auto 22px;
-}
-
-.form {
-  display: grid;
-  grid-template-columns: 400px;
-  row-gap: 8px;
-  margin-right: 15vw;
-  justify-content: right;
-}
-
-.label {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-
-
-
-/* Home Buttons */
-/* .home {
-  display: flex;
-  justify-content: center;
-} */
-
-/* .home-buttons {
-  display: flex;
-  flex-direction: column;
-  width:20%;
-  align-content: center;
-  margin-top: 20px;
-  justify-content: center;
-} */
-
-/* Todos */
-/* .todo-container {
-  display: grid;
-  gap: 24px;
-  justify-content: center;
-}
-
-.listings-container {
-  margin: 30px
-}
-
-.list{ 
-  display: grid;
-  align-items: center;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.exercise-container .list{ 
-  display: grid;
-  justify-items: center;
-  align-items: center;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-} */

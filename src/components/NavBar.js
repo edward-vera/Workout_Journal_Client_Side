@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavButton } from '../components/NavButton';
 import { Link } from 'react-router-dom';
 import '../css/NavBar.css';
-import {NavBarDropDown}  from '../components/NavBarDropDown';
+// import {NavBarDropDown}  from '../components/NavBarDropDown';
 
 export function NavBar() {
   const [click, setClick] = useState(false);
@@ -30,7 +30,7 @@ export function NavBar() {
   return (
     <>
       <nav className='navbar'>
-        <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+        <Link to='/home' className='navbar-logo' onClick={closeMobileMenu}>
           Get Fit!
         </Link>
         <div className='menu-icon' onClick={handleClick}>
@@ -38,8 +38,17 @@ export function NavBar() {
         </div>
         <ul className={click ? 'nav-menu active' : 'nav-menu'}>
           <li className='nav-item'>
-            <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+            <Link to='/home' className='nav-links' onClick={closeMobileMenu}>
               Home
+            </Link>
+          </li>
+          <li className='nav-item'>
+            <Link
+              to='/knownexercises'
+              className='nav-links'
+              onClick={closeMobileMenu}
+            >
+              Exercises
             </Link>
           </li>
           <li
@@ -48,43 +57,32 @@ export function NavBar() {
             onMouseLeave={onMouseLeave}
           >
             <Link
-              to='/services'
+              to='/workouts'
               className='nav-links'
               onClick={closeMobileMenu}
             >
-              Services <i className='fas fa-caret-down' />
+              Workouts 
             </Link>
-            {dropDown && <NavBarDropDown />}
-          </li>
-          <li className='nav-item'>
-            <a
-              href='#exercises'
-              className='nav-links'
-              onClick={closeMobileMenu}
-            >
-              Exercises
-            </a>
-          </li>
-          <li className='nav-item'>
             <Link
-              to='/contact-us'
+              to='/calorietracker'
               className='nav-links'
               onClick={closeMobileMenu}
             >
-              Contact Us
+              Calorie Tracker
             </Link>
+            {/* {dropDown && <NavBarDropDown />} */}
           </li>
           <li>
-            <Link
-              to='/sign-up'
-              className='nav-links-mobile'
+            {/* <Link
+              to='/signin'
+              className='nav-links'
               onClick={closeMobileMenu}
             >
-              Sign Up
-            </Link>
+              Sign In
+            </Link> */}
           </li>
-        </ul>
         <NavButton />
+        </ul>
       </nav>
     </>
   );

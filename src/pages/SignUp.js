@@ -55,7 +55,7 @@ export const SignUp = (props) => {
             <input className='input' type="password" onChange={(e) => setPassword(e.target.value)}/>
         </label>
             <input className='submit' type="submit"/>
-            <Button component={Link} variant='contained' type='submit' to="/"> Already Have An Account? Sign In!</Button>
+            <Button component={Link} variant='contained' type='submit' to="/signin"> Already Have An Account? Sign In!</Button>
     </form>
     </>
   )

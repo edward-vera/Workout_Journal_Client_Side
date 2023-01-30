@@ -7,6 +7,16 @@ import {
 import {
     Link,
 } from 'react-router-dom'
+import { red } from '@mui/material/colors';
+import { styled } from '@mui/material/styles';
+
+const ColorButton = styled(Button)(({ theme }) => ({
+  color: theme.palette.getContrastText(red[500]),
+  backgroundColor: red[500],
+  '&:hover': {
+    backgroundColor: red[700],
+  },
+}));
 
 export function CreateWorkout({token, user, workouts, setworkouts}) {
     const[workout, setWorkout] = useState("");
@@ -29,8 +39,8 @@ export function CreateWorkout({token, user, workouts, setworkouts}) {
     }}>
         
         <WorkoutDropdown />
-        <Button component={Link} variant='contained' type='submit'>Add New Exercise</Button>
-        <Button component={Link} variant='contained' type='submit' to="/workouts">Create Workout!</Button>
+        <ColorButton component={Link} variant='contained' type='submit'>Add New Exercise</ColorButton>
+        <ColorButton component={Link} variant='contained' type='submit' to="/workouts">Create Workout!</ColorButton>
     </form>
   )
 }
