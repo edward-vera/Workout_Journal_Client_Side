@@ -9,7 +9,7 @@ import { Box } from '@mui/material';
 import './css/App.css';
 
 // Components
-import { NavBar } from './components/NavBar'
+// import { NavBar } from './components/NavBar'
 import { ExerciseDetail } from './pages/ExerciseDetail'
 import { Footer } from './components/Footer'
 import { HeroBanner } from './components/HeroBanner'
@@ -51,7 +51,7 @@ export function App() {
 
   return (
         <Box width="400px" sx={{ width : { xl: '1488px'}}} m="auto">
-          <NavBar />
+          {/* <NavBar /> */}
             <Routes>
               <Route path="/" element={<HeroBanner/>}/>
               <Route path="/home" element={<Home />}/>

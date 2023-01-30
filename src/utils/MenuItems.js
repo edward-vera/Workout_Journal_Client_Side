@@ -4,11 +4,6 @@ export const MenuItems = [
         path: '/workouts',
         cName: 'dropdown-link'
     },
-    // {
-    //     title: 'Search Exersises',
-    //     href: '/createworkouts',
-    //     cName: 'dropdown-link'
-    // },
     {
         title: 'Calories',
         path: '/calories',
