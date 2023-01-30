@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavButton } from '../components/NavButton';
 import { Link } from 'react-router-dom';
 import '../css/NavBar.css';
-import {NavBarDropDown}  from '../components/NavBarDropDown';
+// import {NavBarDropDown}  from '../components/NavBarDropDown';
 
 export function NavBar() {
   const [click, setClick] = useState(false);
@@ -43,13 +43,13 @@ export function NavBar() {
             </Link>
           </li>
           <li className='nav-item'>
-            <a
-              href='/knownexercises'
+            <Link
+              to='/knownexercises'
               className='nav-links'
               onClick={closeMobileMenu}
             >
               Exercises
-            </a>
+            </Link>
           </li>
           <li
             className='nav-item'
@@ -63,28 +63,26 @@ export function NavBar() {
             >
               Workouts 
             </Link>
-            {dropDown && <NavBarDropDown />}
-          </li>
-          {/* <li className='nav-item'>
             <Link
-              to='/About'
+              to='/calorietracker'
               className='nav-links'
               onClick={closeMobileMenu}
             >
-              About
+              Calorie Tracker
             </Link>
-          </li> */}
+            {/* {dropDown && <NavBarDropDown />} */}
+          </li>
           <li>
-            <Link
+            {/* <Link
               to='/signin'
-              className='nav-links-mobile'
+              className='nav-links'
               onClick={closeMobileMenu}
             >
               Sign In
-            </Link>
+            </Link> */}
           </li>
-        </ul>
         <NavButton />
+        </ul>
       </nav>
     </>
   );

@@ -25,6 +25,7 @@ import { WorkoutExercises } from './pages/WorkoutExercises';
 import { Calories } from './pages/Calories';
 import { BmiCalculator } from './pages/BmiCalculator';
 import { About } from './pages/About';
+import { CreateCalories } from './components/CreateCalories';
 
 // import cookie from 'cookie'
 // import cookie from 'cookie'
@@ -35,10 +36,10 @@ export function App() {
     const [user, setUser] = useState(null);
   
     // // Check the cookies for a cookie called "loggedIn"
-    //   const checkAuth = () => {
-    //   const cookies = cookie.parse(document.cookie); 
-    //   return cookies['loggedin'] ? true : false;
-    //   }
+      // const checkAuth = () => {
+      // const cookies = cookie.parse(document.cookie); 
+      // return cookies['loggedin'] ? true : false;
+      // }
 
     // // This will hide routes unless logged in
     //   const ProtectedRoute = (props) => {
@@ -58,11 +59,12 @@ export function App() {
               <Route path="/signin" element={<SignIn setToken={setToken}/>} />
               <Route path="/knownexercises" element={<KnownExercises />}/>
               <Route path="/exercise/:id" element={<ExerciseDetail />} />
-              <Route path="/createworkout" element={<CreateWorkout token={token} user={user} setUser={setUser} />}/>
-              <Route path="/workouts" element={<Workouts token={token} user={user} setUser={setUser} />}/>
-              <Route path="/workoutexercises" element={<WorkoutExercises />}/>
+              <Route path="/createworkout" element={<CreateWorkout />}/>
+              <Route path="/workouts" element={<Workouts token={token} user={user} setUser={setUser}/>}/>
+              <Route path="/workoutsid" element={<WorkoutExercises />}/>
               <Route path="/bmicalculator" element={<BmiCalculator />} />
-              <Route path="/calories" element={<Calories />} />
+              <Route path="/calorietracker" element={<Calories />} />
+              <Route path="/createcalories" element={<CreateCalories />} />
               <Route path="/about" element={<About />} />
             </Routes>
           <Footer />

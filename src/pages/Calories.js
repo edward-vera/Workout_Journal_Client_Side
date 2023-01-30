@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import '../css/App.css'
 import {
   Box,
   Button,
@@ -7,47 +9,49 @@ import {
   Stack,
   Typography
 } from '@mui/material'
-import { Link } from 'react-router-dom'
-import axios from 'axios'
-import '../css/App.css'
-import { Loader } from '../components/Loader';
+import { 
+  Link 
+} from 'react-router-dom'
+// import { Loader } from '../components/Loader';
+import { CreateCalories } from '../components/CreateCalories'
+// import { red } from '@mui/material/colors';
+// import { styled } from '@mui/material/styles';
 
 export function Calories(props) {
     // console.log(props.calories);
     const [calories, setCalories] = useState("");
 
   useEffect(() => {
-    axios.get("https://workout-journal-server.vercel.app/calories", {
+    axios.get("https://workout-journal-server.vercel.app/calorietracker", {
       header: {
         Authorization : `Bearer ${props.token}`
       }
     }).then((response) => {
 
-      console.log(response);
+      // console.log(response);
 
       // FOR ACTUAL WEBSITE
-      // setCalories(response.data.user)
+      // props.setUser(response.data.user)
       // FOR STYLING
-      setCalories(response.data)
-    
-    })
-
+      // setCalories(response.data)
+      setCalories(response.data)})
   }, [props.token]);
 
   useEffect(() => {
   }, [calories])
 
-  if (!calories) return <Loader />;
+  if (!calories) return <CreateCalories />;
 
 return( 
 <Box id="exercises" sx={{ mt: { lg: '30px' } }}>
         <Typography fontWeight={700} sx={{ fontSize: { lg: '44px', xs: '30px' } }} mb="49px" textAlign="center">
-        <h1>Your Meal And Calorie Plan!</h1>
+        <Typography component='span' variant='h2'>Your Meal And Calorie Plan!</Typography>
         </Typography>
         <Stack className='workouts-container' direction="row" sx={{ gap: { lg: '107px', xs: '50px' } }} flexWrap="wrap" justifyContent="center">
           {calories.map((calories, index) =>{
+            // console.log(calories)
             return (
-              <Link className="calories-card">
+              <Link key={index} className="calories-card">
                <Button sx={{ mt:'15px', ml: '21px', mr: '22px', color: '#fff', background: '#00425A', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
                Date:{calories.date}
                </Button>
@@ -67,15 +71,20 @@ return(
                 Protein: {calories.protein}
               </Button>
               <Button sx={{ ml: '22px', mr: '22px', color: '#fff', background: '#FC7300', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
-                Calories: {calories.calories}
+                Calories: {calories.calorie}
               </Button>
-              <Button>
-                Submit Meal
-              </Button>
+              
+              {/* <Button component={Link} to="/createcalories" sx={{ ml: '22px', mr: '22px', color: '#fff', background: '#FC7300', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
+                Create New Meal!
+              </Button> */}
             </Link>
           )
         })}
+        <CreateCalories 
+        token={props.token} user={props.user} 
+        setCalories={setCalories} calories={calories}
+        />
       </Stack>
-      </Box>
+    </Box>
   )
 }

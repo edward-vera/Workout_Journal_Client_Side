@@ -9,14 +9,14 @@ import {
     Stack,
     Typography
 } from '@mui/material'
-import DeleteIcon from '@mui/icons-material/Delete'
 import { 
     Link,
 } from 'react-router-dom'
 
 import { red } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
-import { CheckBox } from '@mui/icons-material';
+import { WorkoutCard } from './WorkoutCard';
+import { Loader } from '../components/Loader';
 
 const ColorButton = styled(Button)(({ theme }) => ({
   color: theme.palette.getContrastText(red[500]),
@@ -34,7 +34,6 @@ export function Workouts(props) {
     
     useEffect(() => {
       axios.get("https://workout-journal-server.vercel.app/workouts", {
-      // axios.get("http://localhost:5000/workouts", {
         headers: {               
           Authorization : `Bearer ${props.token}`
         }
@@ -44,30 +43,34 @@ export function Workouts(props) {
           
 
         // FOR ACTUAL SITE
-        // props.setUser(response.data.user)
+        props.setUser(response.data.user)
         // FOR STYLING
-        props.setUser(response.data)
+        // props.setUser(response.data)
           
-      setWorkouts(response.data)})
+      setWorkouts(response.data.rows)})
     }, [props.token]);
 
     useEffect(() => {
     }, [workouts])
     
+    if (!workouts) return <Loader />;
+
+  
     return (
       <Box id="exercises" sx={{ mt: { lg: '30px' } }}>
       <Typography fontWeight={700} sx={{ fontSize: { lg: '44px', xs: '30px' } }} mb="49px" textAlign="center">
-      <h1>Your Workouts!</h1>
+        <h1>Your Workouts!</h1 >
       </Typography>
         <Stack className='workouts-container' direction="row" sx={{ gap: { lg: '107px', xs: '50px' } }} flexWrap="wrap" justifyContent="center">
             {!workouts ? (
-                <span><p>Loading Workouts...</p></span>
+                <Stack><Typography>Loading Workouts...</Typography></Stack>
             ) : (
             workouts.map(({id, workout}) => (
               <Link className="calories-card">
-               <Button sx={{ mt:'15px', ml: '21px', mr: '22px', color: '#fff', background: '#00425A', fontSize: '24px', borderRadius: '20px', textTransform: 'capitalize' }}>
+               <Button component={Link} to="/workoutsid/" sx={{ mt:'15px', ml: '21px', mr: '22px', color: '#fff', background: '#00425A', fontSize: '24px', borderRadius: '20px', textTransform: 'capitalize' }}>
                {workout}
                </Button>
+               <WorkoutCard/>
               <Stack direction="row" justifyContent="center">
                 <Button sx={{color: '#fff', background: '#1F8A70', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
                 Delete
@@ -84,6 +87,3 @@ export function Workouts(props) {
     </Box>
     )
 }
-
-
-{/* <h1>{workout.charAt(0).toUpperCase() + workout.slice(1)}</h1> */}
