@@ -1,5 +1,7 @@
 // Imports
-import React, { useState } from 'react';
+import React,
+{ useState } 
+from 'react';
 import { 
   Route, 
   Routes, 
@@ -9,7 +11,7 @@ import { Box } from '@mui/material';
 import './css/App.css';
 
 // Components
-// import { NavBar } from './components/NavBar'
+import { NavBar } from './components/NavBar'
 import { ExerciseDetail } from './pages/ExerciseDetail'
 import { Footer } from './components/Footer'
 import { HeroBanner } from './components/HeroBanner'
@@ -51,7 +53,7 @@ export function App() {
 
   return (
         <Box width="400px" sx={{ width : { xl: '1488px'}}} m="auto">
-          {/* <NavBar /> */}
+          <NavBar />
             <Routes>
               <Route path="/" element={<HeroBanner/>}/>
               <Route path="/home" element={<Home />}/>
@@ -61,6 +63,7 @@ export function App() {
               <Route path="/exercise/:id" element={<ExerciseDetail />} />
               <Route path="/createworkout" element={<CreateWorkout />}/>
               <Route path="/workouts" element={<Workouts token={token} user={user} setUser={setUser}/>}/>
+              {/* <Route path="/workouts" element={<Workouts />}/> */}
               <Route path="/workoutsid" element={<WorkoutExercises />}/>
               <Route path="/bmicalculator" element={<BmiCalculator />} />
               <Route path="/calorietracker" element={<Calories />} />

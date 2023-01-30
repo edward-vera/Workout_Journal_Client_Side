@@ -38,37 +38,41 @@ export function Workouts(props) {
           Authorization : `Bearer ${props.token}`
         }
       }).then((response) => {
-          
+          console.log(response)
 
         // FOR ACTUAL SITE
         props.setUser(response.data.user)
+        // console.log(response.data.user)
         // FOR STYLING
-        // props.setUser(response.data)
+          // setUser(response.data)
           
-      setWorkouts(response.data.rows)})
-    }, [props]);
+      setWorkouts(response.data)})
+    }, [props.token]);
 
     useEffect(() => {
     }, [workouts])
     
-    if (!workouts) return <Loader />;
+    // if (!workouts) return <Loader />;
 
   
     return (
       <Box id="exercises" sx={{ mt: { lg: '30px' } }}>
       <Typography fontWeight={700} sx={{ fontSize: { lg: '44px', xs: '30px' } }} mb="49px" textAlign="center">
-        <h1>Your Workouts!</h1 >
+        <Typography component={'span'} variant="h2">Your Workouts!</Typography >
       </Typography>
         <Stack className='workouts-container' direction="row" sx={{ gap: { lg: '107px', xs: '50px' } }} flexWrap="wrap" justifyContent="center">
             {!workouts ? (
-                <Stack><Typography>Loading Workouts...</Typography></Stack>
+                <Stack>
+                  <Typography component={'span'}><Loader />Loading Workouts...</Typography>
+                  </Stack>
             ) : (
-            workouts.map(({id, workout}) => (
-            <Link className="calories-card">
-               <Button component={Link} to="/workoutsid/" sx={{ mt:'15px', ml: '21px', mr: '22px', color: '#fff', background: '#00425A', fontSize: '24px', borderRadius: '20px', textTransform: 'capitalize' }}>
+            workouts.map(({ workout }) => (
+            <Box >
+               <Button className='workout-name' component={Link} to="/workoutsid/" sx={{ mt:'15px', ml: '100px', mb:'22px', color: '#fff', background: '#00425A', fontSize: '24px', borderRadius: '20px', textTransform: 'capitalize' }}>
                {workout}
                </Button>
-               <WorkoutCard/>
+            <Stack className="calories-card">
+               <WorkoutCard />
               <Stack direction="row" justifyContent="center">
                 <Button sx={{color: '#fff', background: '#1F8A70', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
                 Delete
@@ -77,7 +81,8 @@ export function Workouts(props) {
                 Edit
                 </Button>
               </Stack>
-            </Link>
+            </Stack>
+            </Box>
             ))
         )}
         <ColorButton component={Link} variant='contained' type='submit' to="/createworkout">Create A New Workout!</ColorButton>

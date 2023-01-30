@@ -3,14 +3,9 @@ import axios from 'axios';
 import '../css/App.css'
 import { 
     Box,
-    // Button,
-    Stack,
-    Typography
+    Button,
+    Stack
 } from '@mui/material'
-// import {
-//     Link, 
-//     useNavigate
-// } from 'react-router-dom'
 import { Loader } from '../components/Loader';
 
 export function WorkoutCard(props) {
@@ -48,9 +43,9 @@ export function WorkoutCard(props) {
             // console.log(exercise);
             return (
             <Stack key={index}>
-            <Stack className='list'>
-                <Typography>Exercise : {exercise.exerciseName.charAt(0).toUpperCase() + exercise.exerciseName.slice(1)}</Typography>
-            </Stack>
+                <Stack>
+                    <Button sx={{ mt:'15px', ml: '21px', mr: '22px', color: '#fff', background: '#00425A', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>Exercise : {exercise.exerciseName.charAt(0).toUpperCase() + exercise.exerciseName.slice(1)}</Button>
+                </Stack>
             </Stack>
             )
         })}
