@@ -9,8 +9,9 @@ import {
 } from '@mui/material'
 // import {
 //     Link, 
-//     // useNavigate
+//     useNavigate
 // } from 'react-router-dom'
+import { Loader } from '../components/Loader';
 
 export function WorkoutCard(props) {
     const [exercises, setExercises] = useState([]);
@@ -38,7 +39,7 @@ export function WorkoutCard(props) {
       }, [exercises])
 
     if(!exercises) {
-        return null
+        return <Loader />
     }
 
   return (

@@ -64,7 +64,7 @@ export function Workouts(props) {
                 <Stack><Typography>Loading Workouts...</Typography></Stack>
             ) : (
             workouts.map(({id, workout}) => (
-              <Link className="calories-card">
+            <Link className="calories-card">
                <Button component={Link} to="/workoutsid/" sx={{ mt:'15px', ml: '21px', mr: '22px', color: '#fff', background: '#00425A', fontSize: '24px', borderRadius: '20px', textTransform: 'capitalize' }}>
                {workout}
                </Button>
