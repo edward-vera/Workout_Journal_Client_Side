@@ -46,7 +46,7 @@ export function Workouts(props) {
         // props.setUser(response.data)
           
       setWorkouts(response.data.rows)})
-    }, [props.token]);
+    }, [props]);
 
     useEffect(() => {
     }, [workouts])
