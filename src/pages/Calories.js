@@ -43,8 +43,8 @@ export function Calories(props) {
   if (!calories) return <CreateCalories />;
 
 return( 
-<Box id="exercises" sx={{ mt: { lg: '30px' } }}>
-        <Typography fontWeight={700} sx={{ fontSize: { lg: '44px', xs: '30px' } }} mb="49px" textAlign="center">
+<Box sx={{ mt: { lg: '30px' } }}>
+        <Typography fontWeight={700} sx={{ fontSize: { lg: '44px', xs: '30px' } }} mt="30px" mb="49px" textAlign="center">
         <Typography component='span' variant='h2'>Your Meal And Calorie Plan!</Typography>
         </Typography>
         <Stack className='workouts-container' direction="row" sx={{ gap: { lg: '107px', xs: '50px' } }} flexWrap="wrap" justifyContent="center">
@@ -52,27 +52,27 @@ return(
             // console.log(calories)
             return (
               <Link key={index} className="calories-card">
-               <Button sx={{ mt:'15px', ml: '21px', mr: '22px', color: '#fff', background: '#00425A', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
-               Date:{calories.date}
-               </Button>
+                  <Button sx={{ mt:'15px', ml: '21px', mr: '22px', color: '#fff', background: '#00425A', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
+                  Date:{calories.date}
+                  </Button>
               <Stack direction="row">
-                <Button sx={{ ml: '21px', color: '#fff', background: '#1F8A70', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
-                Meal: <br/>
-                {calories.meal}
-                </Button>
-                <Button sx={{ ml: '21px', mr: '22px', color: '#fff', background: '#BFDB38', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
-                Ingredients: <br/> {calories.ingredients}
-                </Button>
+                  <Button sx={{ ml: '21px', color: '#fff', background: '#1F8A70', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
+                  Meal: <br/>
+                  {calories.meal}
+                  </Button>
+                  <Button sx={{ ml: '21px', mr: '22px', color: '#fff', background: '#BFDB38', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
+                  Ingredients: <br/> {calories.ingredients}
+                  </Button>
               </Stack>
-              <Button sx={{ ml: '22px', mr: '22px', color: '#fff', background: '#FC7300', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
-                Fat: {calories.fat}
-              </Button>
-              <Button sx={{ ml: '22px', mr: '22px', color: '#fff', background: '#FC7300', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
-                Protein: {calories.protein}
-              </Button>
-              <Button sx={{ ml: '22px', mr: '22px', color: '#fff', background: '#FC7300', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
-                Calories: {calories.calorie}
-              </Button>
+                  <Button sx={{ ml: '22px', mr: '22px', color: '#fff', background: '#FC7300', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
+                    Fat: {calories.fat}
+                  </Button>
+                  <Button sx={{ ml: '22px', mr: '22px', color: '#fff', background: '#FC7300', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
+                    Protein: {calories.protein}
+                  </Button>
+                  <Button sx={{ ml: '22px', mr: '22px', color: '#fff', background: '#FC7300', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
+                    Calories: {calories.calorie}
+                  </Button>
               
               {/* <Button component={Link} to="/createcalories" sx={{ ml: '22px', mr: '22px', color: '#fff', background: '#FC7300', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
                 Create New Meal!
