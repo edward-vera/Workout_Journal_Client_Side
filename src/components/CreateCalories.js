@@ -37,7 +37,7 @@ export function CreateCalories({token, user, calories, setCalories }, props) {
       // }
       ).then((response) => {
 
-        console.log(response)
+        // console.log(response)
       })
 
       if (!calories.length) return <Loader />;

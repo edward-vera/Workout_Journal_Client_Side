@@ -39,7 +39,7 @@ export function Workouts(props) {
         }
       }).then((response) => {
 
-          console.log(response);
+          // console.log(response);
           
 
         // FOR ACTUAL SITE

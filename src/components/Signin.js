@@ -14,7 +14,7 @@ export function SignIn (props) {
     const navigate = useNavigate();
     
   useEffect(() => {
-    console.log({email, password});
+    // console.log({email, password});
   }, [email, password])
 
   return (
@@ -30,7 +30,7 @@ export function SignIn (props) {
                 password
             }
             ).then((response) =>{
-              console.log(response);
+              // console.log(response);
               props.setToken(response.data.token)
             })
 

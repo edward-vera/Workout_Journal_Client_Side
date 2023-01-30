@@ -15,7 +15,7 @@ export const SignIn = (props) => {
   const navigate = useNavigate();
 
     useEffect(() => {
-      console.log({email, password});
+      // console.log({email, password});
     }, [email, password])
 
 
@@ -33,7 +33,7 @@ export const SignIn = (props) => {
                 password
             }
             ).then((response) =>{
-              console.log(response)
+              // console.log(response)
               props.setToken(response.data.token);
               // response.data.token
               // ?(document.cookie = 'loggedIn=true; max-age=60*1000')
