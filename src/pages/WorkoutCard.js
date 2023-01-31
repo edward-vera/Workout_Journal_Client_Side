@@ -10,10 +10,10 @@ import { Loader } from '../components/Loader';
 
 export function WorkoutCard(props) {
     const [exercises, setExercises] = useState([]);
-    // console.log(props);
+    console.log(props);
 
     useEffect(() => {
-        axios.get("https://workout-journal-server.vercel.app/workoutsid", 
+        axios.get(`https://workout-journal-server.vercel.app/workoutsId/workout/${props.workoutId}`, 
              {
              // axios.get("http://localhost:5000/exercises", {
                  headers: 
@@ -25,7 +25,7 @@ export function WorkoutCard(props) {
 
             // console.log(response);
 
-            
+            console.log(response, 'responseeee')
         setExercises(response.data.rows)})
 
       }, [props.token]);
@@ -44,7 +44,8 @@ export function WorkoutCard(props) {
             return (
             <Stack key={index}>
                 <Stack>
-                    <Button sx={{ mt:'15px', ml: '21px', mr: '22px', color: '#fff', background: '#00425A', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>Exercise : {exercise.exerciseName.charAt(0).toUpperCase() + exercise.exerciseName.slice(1)}</Button>
+                    <Button sx={{ mt:'15px', ml: '21px', mr: '22px', color: '#fff', background: '#00425A', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
+                        Exercise : {exercise.exerciseName.charAt(0).toUpperCase() + exercise.exerciseName.slice(1)}</Button>
                 </Stack>
             </Stack>
             )

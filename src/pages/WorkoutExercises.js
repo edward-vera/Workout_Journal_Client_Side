@@ -12,13 +12,16 @@ import {
     // useNavigate
 } from 'react-router-dom'
 import {CreateExercise} from '../components/CreateExercise'
+import { useParams } from 'react-router-dom';
 
 export function WorkoutExercises(props) {
+    const {id} = useParams();
     const [exercises, setExercises] = useState([]);
+    console.log(id, 'workout')
     // console.log(props);
 
     useEffect(() => {
-        axios.get("https://workout-journal-server.vercel.app/workoutsid", 
+        axios.get(`https://workout-journal-server.vercel.app/workoutsId/workout/${id}`, 
              {
              // axios.get("http://localhost:5000/exercises", {
                  headers: 
@@ -82,7 +85,7 @@ return(
                 </Link>  
             )
         })}
-        <CreateExercise />
+        <CreateExercise workoutid={id}/>
         </Stack>
     </Box>
 )}

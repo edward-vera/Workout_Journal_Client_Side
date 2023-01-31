@@ -59,11 +59,11 @@ export function BmiCalculator() {
             <h2 className='center'>BMI BmiCalculator</h2>
             <form onSubmit={calcBmi}>
                 <div>
-                    <lable>Weight (lbs)</lable>
+                    <label>Weight (lbs)</label>
                     <input value={weight} onChange={(e) => setWeight(e.target.value)} />
                 </div>
                 <div>
-                    <lable>Height (in)</lable>
+                    <label>Height (in)</label>
                     <input value={height} onChange={(e) => setHeight(e.target.value)}/>
                 </div>
                 <div>
