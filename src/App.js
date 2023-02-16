@@ -1,6 +1,7 @@
 // Imports
 import React,
-{ useState } 
+{ useState,
+useEffect } 
 from 'react';
 import { 
   Route, 
@@ -29,13 +30,20 @@ import { BmiCalculator } from './pages/BmiCalculator';
 import { About } from './pages/About';
 import { CreateCalories } from './components/CreateCalories';
 
-// import cookie from 'cookie'
-// import cookie from 'cookie'
+import cookie from 'cookie'
 
 
 export function App() {
+    const cookies = cookie.parse(document.cookie)
     const [token, setToken] = useState("");
     const [user, setUser] = useState(null);
+
+    useEffect(() => {
+      if (cookies.token){
+
+        setToken(cookies.token)
+      }
+    }, [])
   
     // // Check the cookies for a cookie called "loggedIn"
       // const checkAuth = () => {
@@ -62,11 +70,11 @@ export function App() {
               <Route path="/knownexercises" element={<KnownExercises />}/>
               <Route path="/exercise/:id" element={<ExerciseDetail />} />
               <Route path="/createworkout" element={<CreateWorkout />}/>
-              <Route path="/workouts" element={<Workouts token={token} user={user} setUser={setUser}/>}/>
+              <Route path="/workouts" element={<Workouts token={token} user={user} setUser={setUser}/>} />
               {/* <Route path="/workouts" element={<Workouts />}/> */}
               <Route path="/workouts/:id" element={<WorkoutExercises />}/>
               <Route path="/bmicalculator" element={<BmiCalculator />} />
-              <Route path="/calorietracker" element={<Calories />} />
+              <Route path="/calorietracker" element={<Calories token={token} user={user} setUser={setUser}/>} />
               <Route path="/createcalories" element={<CreateCalories />} />
               <Route path="/about" element={<About />} />
             </Routes>

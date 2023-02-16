@@ -1,4 +1,7 @@
-import React from 'react'
+import React
+//  { useEffect, useState } 
+from 'react'
+// import axios from 'axios';
 import { 
   Button, 
   Box,
@@ -19,23 +22,28 @@ const ColorButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-export function Home() {
+export function Home(props) {
+  console.log(props)
+  const activeUser = props.user;
+
+  
+
   return (
 
       <Box className='home-buttons' sx={{ mt: { lg: '109px' } }} mt="50px" p="20px">
         <Typography variant="h4" fontWeight="bold" 
-        sx={{ fontSize: { lg: '44px', xs: '30px' } }} mt="-70px" mb="46px" textAlign="center">Welcome *INSERT USER'S NAME HERE*</Typography>
+        sx={{ fontSize: { lg: '44px', xs: '30px' } }} mt="-70px" mb="46px" textAlign="center">Welcome! {activeUser}</Typography>
         <Stack direction="row" sx={{ gap: { lg: '107px', xs: '50px' } }} flexWrap="wrap" justifyContent="center">
           <ColorButton component={Link} variant='contained' type='submit' to="/workouts">
             <Typography>
                 Your Workouts!
             </Typography>
           </ColorButton>
-          <ColorButton component={Link} variant='contained' type='submit' to="/createworkout">
+          {/* <ColorButton component={Link} variant='contained' type='submit' to="/createworkout">
             <Typography>
                 Create New Workout!
             </Typography>
-          </ColorButton>
+          </ColorButton> */}
           <ColorButton component={Link} variant='contained' type='submit' to="/calorietracker">
             <Typography>
                 Your Calorie Tracker!
