@@ -25,7 +25,7 @@ export function WorkoutCard(props) {
 
             // console.log(response);
 
-            console.log(response, 'responseeee')
+            // console.log(response, 'responseeee')
         setExercises(response.data.rows)})
 
       }, [props.token]);

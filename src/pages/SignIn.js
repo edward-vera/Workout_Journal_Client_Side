@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { 
   Button,
-} from '@mui/material'
+} from '@mui/material';
 import {
   Link, 
   useNavigate
-} from 'react-router-dom'
-import '../css/SignIn.css'
+} from 'react-router-dom';
+import '../css/SignIn.css';
+import cookie from 'cookie';
 
 export const SignIn = (props) => {
   const [email, setEmail] = useState("");
@@ -34,6 +35,7 @@ export const SignIn = (props) => {
             }
             ).then((response) =>{
               // console.log(response)
+              document.cookie = cookie.serialize("token", response.data.token)
               props.setToken(response.data.token);
               // response.data.token
               // ?(document.cookie = 'loggedIn=true; max-age=60*1000')

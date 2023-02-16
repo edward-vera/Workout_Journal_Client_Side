@@ -9,6 +9,8 @@ import {
   Toolbar,
 } from '@mui/material';
 
+import '../css/NavBar.css'
+
 import { Link } from 'react-router-dom';
 
 
@@ -33,16 +35,16 @@ export function NavBar() {
     <Box sx={{ flexGrow: 1 }}>
       <ThemeProvider theme={theme}>
       <AppBar color='primary' position="static">
-        <Toolbar>
-          <Button fontSize='36px' sx={ {p:"25px"} } color='inherit' component={Link} to="/home">
-            Get Fit
-          </Button>
-          <Stack ml="300px" direction='row' gap="25px">
-          <Button component={Link} to="/workouts" color="inherit">Workouts</Button>
-          <Button component={Link} to="/knownexercises" color="inherit">Exercises</Button>
-          <Button component={Link} to="/calorietracker" color="inherit">Calorie Tracker</Button>
-          <Button component={Link} to="/bmicalculator" color="inherit">BMI Calc</Button>
-          <Button component={Link} to="/signin" color="inherit">Signin</Button>
+        <Toolbar className='nav' sx={{justifyContent:'right'}}>
+            <Button fontSize='36px' sx={ {p:"25px"} } color='inherit' component={Link} to="/home">
+              Get Fit
+            </Button>
+          <Stack ml="750px" direction='row' gap="25px">
+            <Button component={Link} to="/workouts" color="inherit">Workouts</Button>
+            <Button component={Link} to="/knownexercises" color="inherit">Exercises</Button>
+            <Button component={Link} to="/calorietracker" color="inherit">Calorie Tracker</Button>
+            <Button component={Link} to="/bmicalculator" color="inherit">BMI Calc</Button>
+            <Button component={Link} to="/signin" color="inherit">Signin</Button>
           </Stack>
         </Toolbar>
       </AppBar>

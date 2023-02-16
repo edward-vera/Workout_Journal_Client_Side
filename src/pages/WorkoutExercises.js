@@ -12,16 +12,17 @@ import {
     // useNavigate
 } from 'react-router-dom'
 import {CreateExercise} from '../components/CreateExercise'
+import { DeleteExercise } from '../components/DeleteExercise'
 import { useParams } from 'react-router-dom';
 
 export function WorkoutExercises(props) {
     const {id} = useParams();
     const [exercises, setExercises] = useState([]);
-    console.log(id, 'workout')
+    console.log(id, 'exercises')
     // console.log(props);
 
     useEffect(() => {
-        axios.get(`https://workout-journal-server.vercel.app/workoutsId/workout/${id}`, 
+        axios.get(`https://workout-journal-server.vercel.app/workoutsId/workout/${id}`,
              {
              // axios.get("http://localhost:5000/exercises", {
                  headers: 
@@ -82,10 +83,11 @@ return(
                         <Button sx={{ ml: '22px', mr: '22px', color: '#fff', background: '#FC7300', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
                         Notes : {exercise.notes}
                         </Button>
+                        <DeleteExercise />
                 </Link>  
             )
         })}
-        <CreateExercise workoutid={id}/>
+        <CreateExercise workoutid={ id } exercises={ exercises } setExercises = { setExercises }/>
         </Stack>
     </Box>
 )}

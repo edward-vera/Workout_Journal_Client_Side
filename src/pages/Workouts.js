@@ -11,28 +11,33 @@ import {
 } from '@mui/material'
 import { 
     Link,
+    useParams
 } from 'react-router-dom'
 
-import { red } from '@mui/material/colors';
-import { styled } from '@mui/material/styles';
+// import { red } from '@mui/material/colors';
+// import { styled } from '@mui/material/styles';
 import { WorkoutCard } from './WorkoutCard';
 import { Loader } from '../components/Loader';
+import { CreateWorkout } from '../components/CreateWorkout';
 
-const ColorButton = styled(Button)(({ theme }) => ({
-  color: theme.palette.getContrastText(red[500]),
-  backgroundColor: red[500],
-  '&:hover': {
-    backgroundColor: red[700],
-  },
-}));
+// const ColorButton = styled(Button)(({ theme }) => ({
+//   color: theme.palette.getContrastText(red[500]),
+//   backgroundColor: red[500],
+//   '&:hover': {
+//     backgroundColor: red[700],
+//   },
+// }));
 
 
 
 export function Workouts(props) {
     // console.log(props.workouts)
-    const [workouts, setWorkouts] = useState("");
+    const {id} = useParams();
+    const [workouts, setWorkouts] = useState([]);
+    // console.log(id, 'workouts')
     
     useEffect(() => {
+      // console.log(props.token, '*****token*****')
       axios.get("https://workout-journal-server.vercel.app/workouts", {
         headers: {               
           Authorization : `Bearer ${props.token}`
@@ -45,12 +50,12 @@ export function Workouts(props) {
         // console.log(response.data.user)
         // FOR STYLING
           // setUser(response.data)
-          console.log(response.data, 'response')
-      setWorkouts(response.data)})
-    }, [props]);
+          // console.log(response.data, 'response')
+      setWorkouts(response.data.rows)})
+    }, [props.token]);
 
     useEffect(() => {
-      console.log(workouts, 'effect')
+      // console.log(workouts, 'effect')
     }, [workouts])
     
     // if (!workouts) return <Loader />;
@@ -70,7 +75,7 @@ export function Workouts(props) {
             ) : (
             workouts.map(( workout , index ) => (
             <Box key={index}>
-              {console.log(workout, 'hello')}
+              {/* {console.log(workout, 'hello')} */}
                <Button className='workout-name' component={Link} to={`/workouts/${workout.workoutId}`} sx={{ mt:'15px', ml: '100px', mb:'22px', color: '#fff', background: '#00425A', fontSize: '24px', borderRadius: '20px', textTransform: 'capitalize' }}>
                {workout.workout}
                </Button>
@@ -89,7 +94,7 @@ export function Workouts(props) {
             </Box>
             ))
         )}
-        <ColorButton component={Link} variant='contained' type='submit' to="/createworkout">Create A New Workout!</ColorButton>
+        <CreateWorkout workoutId={ id } workouts={ workouts } setWorkouts={ setWorkouts }/>
         </Stack>
     </Box>
     )

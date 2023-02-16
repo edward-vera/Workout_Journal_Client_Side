@@ -6,9 +6,11 @@ import {
     FilledInput,
     Stack,
 } from '@mui/material'
-import { Loader } from './Loader'
+import { useParams } from 'react-router-dom';
+// import { Loader } from './Loader'
 
 export function CreateExercise({token, user, exercises, setExercises}) {
+    const {id} = useParams();
     const[exerciseName, setExerciseName] = useState("");
     const[muscleTarget, setMuscleTarget] = useState("");
     const[equipmentType, setEquipmentType] = useState("");
@@ -21,26 +23,29 @@ export function CreateExercise({token, user, exercises, setExercises}) {
     const onSubmit = (e) => {
       e.preventDefault();
 
-      axios.post("https://workout-journal-server.vercel.app/workoutsId",{
-          exerciseName,
-          muscleTarget,
-          equipmentType,
-          sets,
-          reps,
-          weight,
-          duration,
-          notes
-      },
-      // {
-      //     headers:{
-      //         Authorization: `Bearer ${token}`
-      //     }
-      // }
-      ).then((response) => {
+      const body = {workoutId : id,
+      exerciseName,
+      muscleTarget,
+      equipmentType,
+      sets,
+      reps,
+      weight,
+      duration,
+      notes}
 
+      axios.post(`https://workout-journal-server.vercel.app/workoutsId/`,
+        body,
+      {
+          headers:{
+              Authorization: `Bearer ${token}`
+          }
+      }
+      ).then((response) => {
+        console.log(response)
         
       })
 
+      setExercises([...exercises, body])
       setExerciseName("");
       setMuscleTarget("");
       setEquipmentType("");
@@ -49,7 +54,6 @@ export function CreateExercise({token, user, exercises, setExercises}) {
       setWeight("");
       setDuration("");
       setNotes("");
-      setExercises(...exercises.data, {setExercises})
   }
 
   return (
