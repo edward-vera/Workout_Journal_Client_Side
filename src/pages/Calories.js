@@ -44,7 +44,7 @@ export function Calories(props) {
   }, [props.token]);
 
   useEffect(() => {
-    console.log('calories DATAAAAAAAAA', calories)
+    // console.log('calories DATAAAAAAAAA', calories)
   }, [calories])
 
   if (!calories) return <CreateCalories />;

@@ -12,7 +12,7 @@ export function CreateWorkout({token, user, workouts, setWorkouts}, props) {
     const [workout, setWorkout] = useState("");
 
     const onSubmit = (e) => {
-        // e.preventDefault();
+        e.preventDefault();
 
         const body = {
             workout
