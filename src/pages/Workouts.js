@@ -38,6 +38,9 @@ export function Workouts(props) {
     
     useEffect(() => {
       // console.log(props.token, '*****token*****')
+      if(!props.token){
+        return
+      }
       axios.get("https://workout-journal-server.vercel.app/workouts", {
         headers: {               
           Authorization : `Bearer ${props.token}`
@@ -96,7 +99,9 @@ export function Workouts(props) {
         )}
         <CreateWorkout 
         workoutId={ id } workouts={ workouts } 
-        setWorkouts={ setWorkouts }/>
+        setWorkouts={ setWorkouts }
+        token={ props.token }
+        />
         </Stack>
     </Box>
     )

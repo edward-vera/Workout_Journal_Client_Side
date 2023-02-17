@@ -9,32 +9,30 @@ import { useParams } from 'react-router-dom';
 
 export function CreateWorkout({token, user, workouts, setWorkouts}, props) {
     console.log(props)
-    const {id} = useParams();
     const [workout, setWorkout] = useState("");
-    const [workoutId, setWorkoutId] = useState("");
 
     const onSubmit = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
 
-    const body = {
-        workoutId,
-        workout}
-    
-    axios.post("https://workout-journal-server.vercel.app/workouts",
-        body,
-    {
-        headers:{
-            Authorization: `Bearer ${token}`
+        const body = {
+            workout
         }
-    }
+        console.log('i am a log')
+        console.log(token, 'TOKENNNNNN')
+        axios.post("https://workout-journal-server.vercel.app/workouts",
+            body,
+        {
+            headers:{
+                Authorization: `Bearer ${token}`
+            }
+        }
     ).then((response) => {
 
         console.log(response, "RESPONSE")
 
     })
 
-    setWorkouts([...workouts, body], {setWorkouts})
-    setWorkoutId("");
+    setWorkouts([...workouts, body])
     setWorkout("");
     }
 
