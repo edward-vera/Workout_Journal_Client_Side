@@ -42,10 +42,6 @@ export function WorkoutExercises(props) {
       useEffect(() => {
       }, [exercises])
 
-    if(!exercises) {
-        return null
-    }
-
 return(
     <Box id="exercises" sx={{ mt: { lg: '30px' } }}>
         <Typography fontWeight={700} sx={{ fontSize: { lg: '44px', xs: '30px' } }} mt="30px" mb="49px" textAlign="center">

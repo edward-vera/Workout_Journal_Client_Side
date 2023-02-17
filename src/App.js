@@ -71,7 +71,6 @@ export function App() {
               <Route path="/exercise/:id" element={<ExerciseDetail />} />
               <Route path="/createworkout" element={<CreateWorkout />}/>
               <Route path="/workouts" element={<Workouts token={token} user={user} setUser={setUser}/>} />
-              {/* <Route path="/workouts" element={<Workouts />}/> */}
               <Route path="/workouts/:id" element={<WorkoutExercises />}/>
               <Route path="/bmicalculator" element={<BmiCalculator />} />
               <Route path="/calorietracker" element={<Calories token={token} user={user} setUser={setUser}/>} />

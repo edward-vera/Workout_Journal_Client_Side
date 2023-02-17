@@ -22,8 +22,12 @@ export function Calories(props) {
     // console.log(props.calories);
     const [calories, setCalories] = useState([]);
 
+    
+    useEffect(() => {
     console.log(props.token, '*****token*****')
-  useEffect(() => {
+    if(!props.token){
+      return
+    }
     axios.get("https://workout-journal-server.vercel.app/calorietracker", {
       headers: {
         Authorization : `Bearer ${props.token}`
@@ -40,6 +44,7 @@ export function Calories(props) {
   }, [props.token]);
 
   useEffect(() => {
+    console.log('calories DATAAAAAAAAA', calories)
   }, [calories])
 
   if (!calories) return <CreateCalories />;
@@ -53,7 +58,7 @@ return(
           {calories.map((item, index) =>{
             // console.log(calories)
             return (
-              <CalorieCard calories={item} allCalories={calories} key={index} setAllCalories={setCalories}/>
+              <CalorieCard calories={item} allCalories={calories} key={index} token={props.token} setAllCalories={setCalories}/>
           )
         })}
         <CreateCalories 

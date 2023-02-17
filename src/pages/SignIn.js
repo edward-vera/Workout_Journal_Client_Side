@@ -16,7 +16,7 @@ export const SignIn = (props) => {
   const navigate = useNavigate();
 
     useEffect(() => {
-      // console.log({email, password});
+      console.log({email, password});
     }, [email, password])
 
 

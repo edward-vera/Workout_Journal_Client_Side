@@ -1,23 +1,24 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import axios from 'axios';
 import { 
     Box,
     FilledInput,
     Stack,
 } from '@mui/material'
-import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 export function CreateWorkout({token, user, workouts, setWorkouts}, props) {
+    console.log(props)
     const {id} = useParams();
-    const[workout, setWorkout] = useState("");
-    const[workoutId, setWorkoutId] = useState("");
+    const [workout, setWorkout] = useState("");
+    const [workoutId, setWorkoutId] = useState("");
 
     const onSubmit = (e) => {
         e.preventDefault();
 
     const body = {
-        workout
-    }
+        workoutId,
+        workout}
     
     axios.post("https://workout-journal-server.vercel.app/workouts",
         body,
@@ -27,11 +28,12 @@ export function CreateWorkout({token, user, workouts, setWorkouts}, props) {
         }
     }
     ).then((response) => {
+
         console.log(response, "RESPONSE")
 
     })
 
-    setWorkouts([...workouts, body])
+    setWorkouts([...workouts, body], {setWorkouts})
     setWorkoutId("");
     setWorkout("");
     }

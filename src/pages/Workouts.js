@@ -58,7 +58,7 @@ export function Workouts(props) {
       // console.log(workouts, 'effect')
     }, [workouts])
     
-    // if (!workouts) return <Loader />;
+    if (!workouts) return <Loader />;
 
   
     return (
@@ -94,7 +94,9 @@ export function Workouts(props) {
             </Box>
             ))
         )}
-        <CreateWorkout workoutId={ id } workouts={ workouts } setWorkouts={ setWorkouts }/>
+        <CreateWorkout 
+        workoutId={ id } workouts={ workouts } 
+        setWorkouts={ setWorkouts }/>
         </Stack>
     </Box>
     )
