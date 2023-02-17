@@ -56,8 +56,6 @@ export function CreateExercise({token, user, exercises, setExercises}) {
       setNotes("");
   }
 
-  if (!exercises.length) return <Loader />;
-
   return (
       <Box id="exercises" sx={{ mt: { lg: '30px' } }}>
         <Stack className='workouts-container' direction="row" sx={{ gap: { lg: '107px', xs: '50px' } }} flexWrap="wrap" justifyContent="center">

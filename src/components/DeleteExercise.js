@@ -3,17 +3,19 @@ import axios from 'axios'
 import {
     Button,
 } from '@mui/material'
-import { useParams } from 'react-router-dom'
 
-export function DeleteExercise({workoutId}) {
-    const {id} = useParams();
+export function DeleteExercise({id, token}) {
     const onSubmit = (e) =>{
         e.preventDefault();
-    
-        axios.delete(`https://workout-journal-server.vercel.app/workoutsId/`,
-        id
+        console.log(token, 'this is a token')
+        axios.delete(`https://workout-journal-server.vercel.app/workoutsId/${id}`,
+        {
+            headers: {
+              Authorization : `Bearer ${token}`
+            }
+        }
         ).then((response => {
-            console.log(response, "this")
+            console.log(response, "this has been deleted")
         }))
     }
 
