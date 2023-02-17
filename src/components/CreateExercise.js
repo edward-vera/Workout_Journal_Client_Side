@@ -7,7 +7,7 @@ import {
     Stack,
 } from '@mui/material'
 import { useParams } from 'react-router-dom';
-// import { Loader } from './Loader'
+import { Loader } from './Loader'
 
 export function CreateExercise({token, user, exercises, setExercises}) {
     const {id} = useParams();
@@ -55,6 +55,8 @@ export function CreateExercise({token, user, exercises, setExercises}) {
       setDuration("");
       setNotes("");
   }
+
+  if (!exercises.length) return <Loader />;
 
   return (
       <Box id="exercises" sx={{ mt: { lg: '30px' } }}>

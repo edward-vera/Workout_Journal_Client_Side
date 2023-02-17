@@ -10,7 +10,9 @@ import {
   Stack,
   // Typography
 } from '@mui/material'
-import { Link, useParams } from 'react-router-dom'
+import { 
+  Link,
+  useParams } from 'react-router-dom'
 import { Loader } from './Loader'
 
 export function CreateCalories({token, user, calories, setCalories }, props) {
@@ -34,7 +36,7 @@ export function CreateCalories({token, user, calories, setCalories }, props) {
       axios.post("https://workout-journal-server.vercel.app/calorietracker", 
         body,
       {
-        header: {
+        headers: {
           Authorization : `Bearer ${token}`
         }
       }
@@ -43,9 +45,10 @@ export function CreateCalories({token, user, calories, setCalories }, props) {
         console.log(response)
       })
 
-      if (!calories.length) return <Loader />;
+      // if (!calories.length) return <Loader />;
+      console.log(calories)
 
-        setCalories(...calories.data, {setCalories})
+        setCalories([...calories, body])
         setMeal("");
         setIngredients("");
         setCalorie("");

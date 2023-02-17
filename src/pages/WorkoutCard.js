@@ -10,7 +10,7 @@ import { Loader } from '../components/Loader';
 
 export function WorkoutCard(props) {
     const [exercises, setExercises] = useState([]);
-    console.log(props);
+    // console.log(props);
 
     useEffect(() => {
         axios.get(`https://workout-journal-server.vercel.app/workoutsId/workout/${props.workoutId}`, 

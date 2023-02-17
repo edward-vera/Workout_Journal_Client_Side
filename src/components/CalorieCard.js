@@ -13,7 +13,7 @@ import {
 // } from 'react-router-dom'
 import axios from 'axios';
 
-export function CalorieCard({calories, allCalories, setAllCalories}) {
+export function CalorieCard({token, calories, allCalories, setAllCalories}) {
   
   const [edit, setEdit] = useState(false);
   const [caloriesState, setCaloriesState] = useState(calories);
@@ -28,7 +28,12 @@ export function CalorieCard({calories, allCalories, setAllCalories}) {
 
   const handleSubmit = (e) => {
     axios.put(`https://workout-journal-server.vercel.app/calorietracker/${calories.id}`,
-      caloriesState
+      caloriesState,
+      {
+        headers: {
+          Authorization : `Bearer ${token}`
+        }
+      }
     ).then((response) => {
       console.log(response)
       const copy = [...allCalories];
@@ -38,7 +43,7 @@ export function CalorieCard({calories, allCalories, setAllCalories}) {
       }) 
       copy[foundIndex] = caloriesState;
       setAllCalories(copy)
-      setEdit(true)
+      setEdit(false)
     })
   }
 
