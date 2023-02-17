@@ -19,7 +19,7 @@ export function WorkoutExercises(props) {
     const {id} = useParams();
     const [exercises, setExercises] = useState([]);
     console.log(id, 'exercises')
-    // console.log(props);
+    console.log(props.token, 'inside workoutexercises');
 
     useEffect(() => {
         axios.get(`https://workout-journal-server.vercel.app/workoutsId/workout/${id}`,
@@ -51,6 +51,7 @@ return(
         {exercises.map((exercise, index) => {
             return(
                 <Link key={index} className="calories-card">
+                    {console.log(exercise)}
                         <Button sx={{ mt:'15px', ml: '21px', mr: '22px', color: '#fff', background: '#00425A', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
                         Exercise : {exercise.exerciseName.charAt(0).toUpperCase() + exercise.exerciseName.slice(1)}
                         </Button>
@@ -79,7 +80,7 @@ return(
                         <Button sx={{ ml: '22px', mr: '22px', color: '#fff', background: '#FC7300', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
                         Notes : {exercise.notes}
                         </Button>
-                        <DeleteExercise />
+                        <DeleteExercise id={ exercise.id } token={ props.token }/>
                 </Link>  
             )
         })}
