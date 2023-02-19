@@ -23,7 +23,7 @@ const theme = createTheme({
 
 export function LoginBar(props) {
   // console.log(props);
-  const activeUser = props.user.slice(-1)[0].username;
+  const activeUser = props.user.slice(-1)[0].name;
   return (
     <Box sx={{ flexGrow: 1 }}>
       <ThemeProvider theme={theme}>

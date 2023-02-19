@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React 
+// { useState } 
+from 'react'
 import axios from 'axios'
 import {
     Button,
 } from '@mui/material'
 
-export function DeleteExercise({id, token}) {
+export function DeleteExercise({id, token, exercises, setExercises}) {
     const onSubmit = (e) =>{
         e.preventDefault();
 
@@ -19,6 +21,16 @@ export function DeleteExercise({id, token}) {
         }
         ).then((response) => {
             console.log(response, "this has been deleted")
+
+            const copy = [...exercises];
+            const foundIndex = copy.findIndex(item => {
+                return item.id == id
+            })
+
+            copy.splice(foundIndex, 1)
+            console.log(copy, "this is the copy")
+            setExercises(copy);
+            
         })
     }
 

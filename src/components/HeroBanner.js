@@ -51,8 +51,8 @@ export function HeroBanner() {
       padding= "10px"
       > 
       
-      <Link to="/knownexercises" style={{ textDecoration: "none", color:"white"}}>
-        Explore Possible Exercises
+      <Link to="/signin" style={{ textDecoration: "none", color:"white"}}>
+        Sign In!
       </Link>
       
       </ColorButton>

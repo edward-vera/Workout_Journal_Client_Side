@@ -9,18 +9,18 @@ import { useParams } from 'react-router-dom';
 
 export function CreateWorkout({token, user, workouts, setWorkouts}, props) {
     console.log(props)
-    const [workout, setWorkout] = useState("");
+    const [workout, setWorkout] = useState({
+        workoutId : "",
+        workout : ""
+    });
 
     const onSubmit = (e) => {
         e.preventDefault();
 
-        const body = {
-            workout
-        }
         console.log('i am a log')
         console.log(token, 'TOKENNNNNN')
         axios.post("https://workout-journal-server.vercel.app/workouts",
-            body,
+            workout,
         {
             headers:{
                 Authorization: `Bearer ${token}`
@@ -29,11 +29,15 @@ export function CreateWorkout({token, user, workouts, setWorkouts}, props) {
     ).then((response) => {
 
         console.log(response, "RESPONSE")
-
+        const copyBody = {...workout}
+        copyBody.workoutId = response.data.insertId
+        setWorkouts([...workouts, copyBody])
     })
 
-    setWorkouts([...workouts, body])
-    setWorkout("");
+    setWorkout({
+        workoutId : "",
+        workout : ""
+    });
     }
 
   return (
@@ -42,8 +46,11 @@ export function CreateWorkout({token, user, workouts, setWorkouts}, props) {
           <Stack className="calories-card">
 
               <FilledInput type="text" className='input' 
-              onChange={(e) => setWorkout(e.target.value)} 
-              value={workout}
+              onChange={(e) => setWorkout({
+                ...workout, 
+                workout : e.target.value
+              })} 
+              value={workout.workout}
               placeholder="Workout Name">
               </FilledInput>
 

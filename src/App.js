@@ -61,7 +61,7 @@ export function App() {
 
   return (
         <Box width="400px" sx={{ width : { xl: '1488px'}}} m="auto">
-          <NavBar />
+          <NavBar token={token} setToken={setToken}/>
             <Routes>
               <Route path="/" element={<HeroBanner/>}/>
               <Route path="/home" element={<Home />}/>

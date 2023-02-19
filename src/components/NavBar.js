@@ -9,13 +9,15 @@ import {
   Toolbar,
 } from '@mui/material';
 
-import '../css/NavBar.css'
+import cookie from 'cookie';
+
+import '../css/NavBar.css';
 
 import { Link } from 'react-router-dom';
 
 
 
-export function NavBar() {
+export function NavBar({token, setToken}) {
 
   const theme = createTheme({
     palette: {
@@ -31,6 +33,13 @@ export function NavBar() {
     },
   });
 
+    const handleLogOut = () => {
+      document.cookie = cookie.serialize("token", null, {maxAge: 0 });
+    
+      setToken("");
+
+    }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <ThemeProvider theme={theme}>
@@ -44,7 +53,7 @@ export function NavBar() {
             <Button component={Link} to="/knownexercises" color="inherit">Exercises</Button>
             <Button component={Link} to="/calorietracker" color="inherit">Calorie Tracker</Button>
             <Button component={Link} to="/bmicalculator" color="inherit">BMI Calc</Button>
-            <Button component={Link} to="/signin" color="inherit">Signin</Button>
+            {token? <Button component={Link} onClick={handleLogOut} to="/signin" color="inherit">Log Out</Button> : <Button component={Link} to="/signin" color="inherit">Signin</Button>}
           </Stack>
         </Toolbar>
       </AppBar>

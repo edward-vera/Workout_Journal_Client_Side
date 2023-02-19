@@ -80,7 +80,7 @@ return(
                         <Button sx={{ ml: '22px', mr: '22px', color: '#fff', background: '#FC7300', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
                         Notes : {exercise.notes}
                         </Button>
-                        <DeleteExercise id={ exercise.id } token={ props.token } />
+                        <DeleteExercise id={ exercise.id } token={ props.token } exercises = { exercises } setExercises = { setExercises }/>
                 </Link>  
             )
         })}
